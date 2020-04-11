@@ -1,0 +1,29 @@
+.header{ background: #010105;}
+.nav-link:active{ color: #2f6cf7 !important}
+.nav-link:hover{ color: #2f6cf7 !important;}
+.logo_image{ width: 12%; }
+.btn-nav{border-radius: 20px; height: 30px; width: 75px; margin-top: 10%;padding-top: 2%; background: #4154ff;}
+.container-fluid{ height: 576px; overflow: hidden;  background-color: #010105;
+        background-image: linear-gradient(to bottom right, #010105 ,  #160432 , #050928 );}
+.title{  color: #2d9eff; margin-top: 3%; margin-left: 15%; font-weight: 500;}
+.left-span{ margin-left: 15%; font-size: 11px; color: #e1d400; position: relative; top: -8px; font-weight: 100;}
+.title-text1{ color: white; width: 43%; margin-left: 15%; margin-top: 5%; font-size: 15px; font-weight: 100;}
+.title-text2, .title-text3{ color: white; width: 45%; margin-left: 15%; margin-top: -1%; font-size: 15px; font-weight: 100;}
+.doctor_image{ width: 440px; border-radius: 50%; margin-top: 6%; height: 435px; margin-left: 10%; padding-left: 4%;}
+.image-block{width: 80%; height: 72%; border-radius: 50%; margin-left: -18%; margin-top: 5%; background-color: #010105;
+    background-image: linear-gradient(to bottom right, #010105 , rgb(24, 3, 46), rgb(69, 58, 95) ); }
+.signUpContent{ margin-top: 5%; margin-left: 2%; background: white; width: 55%; height: 68%; border-radius: 8px;}
+.login-content-title{margin-left: 8%; padding-top: 8%; color:   #4154ff ;font-weight: 700 !important;}
+.signUp-content-title{ margin-left: 5%; padding-top: 4%; color:  #4154ff; font-weight: 600 !important;}
+.alert-danger{ width: 85%; padding-left: 2%; font-size: 11px;;}
+.signUp-form{ margin-left: 5%; margin-top: 2%;}
+.submit{  background: #4154ff; width: 87%;}
+.login-span{ font-size: 12px; margin-left: 2%; font-weight: 600; position: relative; top: 2px;}
+.decalartion-text1{ font-size: 11px; margin-left: 0%; font-weight: 500; position: relative ;top: 6px;}
+.decalartion-text2{ font-size: 11px; margin-left: 8%; font-weight: 500; position: relative ;top: 0px}
+.signUp{ color: #2a6cb1;}
+.alert-danger{ width: 85%; padding-left: 2%;}
+.user_image{border-radius: 50%; width: 16%; margin-top: 6%; border: 1px solid #a9a6a6;}
+.signUp-input { border:none; border-bottom: 1px solid #8c9ba5; padding: 10px 10px; outline: none;  width: 85%; font-size: 12px; color: #494a4b;}
+[placeholder]:focus::-webkit-input-placeholder { transition: text-indent 0.4s 0.4s ease; text-indent: -100%; opacity: 1; }
+.state-drpdwn{  margin-left: -20%;}

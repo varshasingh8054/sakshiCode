@@ -1,0 +1,34 @@
+.header{ background:  #0e081c; height: 65px;}
+.w3-dropdown-content{ color: #0844cf; font-weight: 600;}
+.w3-button:hover{ color: #0844cf !important; background-color: #dbe6f7 !important;}
+.logo_image{margin-left: -7%; width: 70%; }
+.container-fluid{  background-color: black;
+    background-image: linear-gradient(to bottom right,#010105,#2d0b47,#131e64,#04092b,#14206b     );}
+
+input:focus{ border: none;}
+[placeholder]:focus::-webkit-input-placeholder { transition: text-indent 0.4s 0.4s ease; text-indent: -100%; opacity: 1; }
+
+.has-search .form-control {
+    background: #0e081c;
+    border: none;
+    padding-left: 2.375rem;
+    width: 50%;
+    margin-bottom: 2%;
+    border-radius: 0;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 1.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}   
+
+.fa-bell{ color: rgb(253, 211, 21);  font-size: 24px; position: absolute; top: 6px; left: -7px;}
+
+.user_image{border-radius: 50%; position: relative; left: 70px;  width: 30%; bottom: 8px;}

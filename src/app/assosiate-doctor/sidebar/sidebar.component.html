@@ -1,0 +1,22 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+  <div class="list-group">
+      <a [routerLink]="['cases']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="far fa-address-card"></i>&nbsp;&nbsp;
+          <span>{{ 'Cases' }}</span>
+      </a>
+      <a [routerLink]="['parcticeManagement']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <i class="fas fa-file-alt"></i>&nbsp;&nbsp;
+          <span>{{ ' Practice Management' }}</span>
+      </a>
+      <a [routerLink]="['profile']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+              <i class="fa fa-user"></i>
+          <span>{{ 'Profile Details' }}</span>
+      </a>
+      </div>
+  <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+      <!-- <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp; -->
+      <i class="fas fa-angle-{{collapsed?'right':'left'}}"></i>&nbsp;&nbsp;
+        <span class="title">RayX Diagnostics</span>
+        <span class="left-span">CONNECTING THE DOTS</span>
+  </div>  
+</nav>

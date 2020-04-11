@@ -1,0 +1,24 @@
+.container{ margin-left: 4%; margin-top: 12px;}
+.title{ color: #fff;}
+hr{ opacity: 0.2; width: 75%; margin-top: 1%;}
+
+p:hover{ cursor: pointer;}
+.step-active{border: 1px solid #0e58ca; padding-left: 3%; padding-right: 2%; border-radius: 50%; padding-top: 1%; padding-bottom: 1%;
+background: #0e58ca;}
+.step-inactive{border: 1px solid white; padding-left: 3%; padding-right: 2%; border-radius: 50%; padding-top: 1%; padding-bottom: 1%; }
+
+.content-box{ margin-top: 2%; background: white; width: 62%; border-radius: 8px;}
+.form-heading{ background: #e6e8ea; padding-top: 2%; padding-left: 5%; font-weight: bolder; font-size: 17px; padding-bottom: 2%; border-radius: 8px;}
+.form-content{ margin-left: 5%;}
+.gender{ position: absolute; margin-top: 5%;}
+.radio-options{position: relative;top: 30px; left: -50px; font-size: 14px; color: #656667;}
+textarea{ color: #656667; border: 1px solid #c7c7c7; outline: none; border-radius: 5px;}
+textarea::placeholder{ padding-top: 2%; padding-left: 2%;}
+.cancel{color: #0e59cc; border: 1px solid #0e59cc; border-radius: 2px; padding-left: 4%;font-weight: 600; padding-right: 4%;}
+.draft, .continue{color: white;border: none; border-radius: 2px; padding-left: 4%; padding-right: 4%;
+    padding-top:1%; padding-bottom:1%; background : #0e59cc ;}
+.delivery-heading{background: #d4e5f7; padding-top: 2%; padding-left: 7%; font-weight: bolder; font-size: 16px;margin-left: -5%; padding-bottom: 2%;}
+.practice-heading{padding-top: 1%; font-weight: bolder; font-size: 16px;padding-bottom: 1%; position: relative; left: -200px;}
+.dragDrop-heading{ padding-left: 19%; font-size: 14px; color: grey; position: relative; top: 50px;}
+.input-field { border: none; border-bottom: 1px solid #c7c7c7; outline: none; padding: 10px 10px; width: 92%; font-size: 14px; color: #656667;}
+[placeholder]:focus::-webkit-input-placeholder { transition: text-indent 0.4s 0.4s ease; text-indent: -100%; opacity: 1; }

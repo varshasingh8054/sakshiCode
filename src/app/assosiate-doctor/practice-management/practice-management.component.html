@@ -1,0 +1,98 @@
+<div class="container">
+
+  <div class="title">
+    <h4>Practice Management</h4>
+    <hr>
+  </div>
+
+  <div class="practice-doctor">
+
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+        <h6 class="nav-title">DOCTORS IN YOUR PRACTICE</h6>
+      </nav>
+    </header>
+
+    <div class="search-bar">
+      <form action="">
+        <div class="form-group mb-4">
+          <input type="search" placeholder="Search your practice" aria-describedby="button-addon"
+            class="form-control search-input" disabled>
+        </div>
+      </form>
+    </div>
+
+    <div class="table" style="max-height: 200px; overflow: auto;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 35%;"><b>NAME</b></th>
+            <th scope="col" style="width: 35%;">EMAIL</th>
+            <th scope="col" style="width: 30%;">STATUS</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="assosiateDoc.length > 0">
+          <tr *ngFor="let item of assosiateDoc">
+            <td>{{item.firstName.charAt(0).toUpperCase() + item.firstName.slice(1)}} {{item.lastName.charAt(0).toUpperCase() + item.lastName.slice(1)}}</td>
+            <td>{{item.email}}</td>
+            <td *ngIf="item.status == 'Pending'" style="color: #ff7800;">Pending</td>
+            <td *ngIf="item.status == 'Active'" style="color: #43ae26;">Active</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="assosiateDoc.length == 0">
+          <p class="text-center no_data"> No Data Found!</p>
+         </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="referring-doctor">
+
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+        <h6 class="nav-title">REFERRING DOCTORS IN YOUR PRACTICE</h6>
+      </nav>
+    </header>
+
+    <div class="search-bar">
+      <form action="">
+        <div class="form-group mb-4">
+          <input type="search" placeholder="Search your practice" aria-describedby="button-addon"
+            class="form-control search-input" disabled>
+        </div>
+      </form>
+    </div>
+  
+
+    <div class="table"  style="max-height: 200px; overflow: auto;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 35%;"><b>NAME</b></th>
+            <th scope="col" style="width: 35%;">EMAIL</th>
+            <th scope="col" style="width: 30%;">STATUS</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="referringDoc.length > 0">
+          <tr *ngFor="let item of referringDoc">
+            <td>{{item.firstName.charAt(0).toUpperCase() + item.firstName.slice(1)}} {{item.lastName.charAt(0).toUpperCase() + item.lastName.slice(1)}}</td>
+            <td>{{item.email}}</td>
+            <td *ngIf="item.status == 'Pending'" style="color: #ff7800;">Pending</td>
+            <td *ngIf="item.status == 'Active'" style="color: #43ae26;">Active</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="referringDoc.length == 0">
+         <p class="text-center no_data"> No Data Found!</p>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+  <br>
+  <br>
+  <br>
+
+</div>

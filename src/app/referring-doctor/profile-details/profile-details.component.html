@@ -1,0 +1,71 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<div class="profile-container" style="height: 780px;">
+  <div class="container">
+    <div class="title">
+      <h4>Profile Options</h4>
+      <hr>
+    </div>
+  </div>
+
+  <div class="content formBox">
+    <div class="content-box">
+      <form [formGroup]="editForm" class="formContent" role="form" (submit)="edit(editForm.value)">
+        <div class="row">
+          <div class="col-md-2">
+            <img class="user_image"
+              src="https://tse1.mm.bing.net/th?id=OIP.ULpMVBjojvzZUclYEPzQ_wHaHa&pid=Api&P=0&w=300&h=300"
+              alt="user_image">
+          </div>
+          <div class="col-md-10" style="margin-top: 4%;">
+            <p *ngIf="name" class="user_name">{{name}}</p>
+            <p *ngIf="rayxId" class="user_id">RAYX ID: {{rayxId}}</p>
+          </div>
+        </div>
+        <div style="margin-top: 2%;">
+          <input type="name" class="text-input " placeholder="First Name*" name="firstName" id="firstName"
+            formControlName="firstName" />
+        </div>
+        <div>
+          <input type="name" class="text-input " placeholder="Last Name" name="lastName" id="lastName"
+            formControlName="lastName" />
+        </div>
+        <div>
+          <input type="email" class="text-input " placeholder="Email* (this will be your username)"
+            (keydown.space)="$event.preventDefault()" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
+            id="email" name="email" formControlName="email">
+<!-- 
+          <div *ngIf="!email.valid" class="aler alert-danger">
+          <div [hidden]="!emailref.errors?.pattern">
+            Invalid pattern
+          </div>
+        </div> -->
+        </div>
+
+        <div *ngIf="!changePassword">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="password-text">Password</p>
+            </div>
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-primary submitBtn changePass" (click)="change()">Change</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="changePassword">
+          <input type="password" class="text-input " placeholder="Password*" (keydown.space)="$event.preventDefault()"
+            pattern="^.*(?=.{8,}).*$" id="password" name="password" formControlName="password">
+        </div>
+
+        <div *ngIf="changePassword">
+          <input type="password" class="text-input " placeholder="Confirm Password*" name="confirmpassword"
+            id="confirmpassword" formControlName="confirmpassword" />
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary submitBtn" [disabled]="!editForm.valid">Save</button>
+        <br>
+
+      </form>
+    </div>
+    <br>
+  </div>
+</div>

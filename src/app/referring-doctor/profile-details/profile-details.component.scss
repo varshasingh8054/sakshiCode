@@ -1,0 +1,16 @@
+.container{ margin-left: 4%; margin-top: 12px; }
+.title{ color: #fff;}
+hr{ opacity: 0.2; width: 75%;}
+
+.formBox{ margin-top: 2%; margin-left: 5%; background: white; width: 55%;  border-radius: 8px;}
+.formContent{ margin-left: 5%; margin-top: 2%;}
+.user_image{border-radius: 50%; width: 100%; margin-top: 25%; border: 1px solid #a9a6a6;}
+.user_name{font-size: 18px; font-weight: 700;}
+.user_id{ position: relative; top: -12px;  font-size: 13px; font-weight: 800;}
+.text-input { border:none; border-bottom: 1px solid #8c9ba5; padding: 10px 10px; outline: none;  width: 85%; font-size: 13px; color: #494a4b;}
+[placeholder]:focus::-webkit-input-placeholder { transition: text-indent 0.4s 0.4s ease; text-indent: -100%; opacity: 1; }
+.alert-danger{ width: 85%; padding-left: 2%;}
+h6{ padding-top: 10px; padding-bottom: 10px; padding-left: 6%; font-weight: 700;}
+.submitBtn{padding-left: 5%; padding-right: 6%; background: #0e59cc;}
+.password-text{ position: relative; top: 15px; left: 8px; font-weight: 600;}
+.changePass{position: relative; top: 8px; left: 38%;}

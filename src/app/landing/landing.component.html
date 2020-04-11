@@ -1,0 +1,199 @@
+<header class="header sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black py-3 shadow-sm">
+      <div class="container">
+          <img class="logo_image" src='./../../assets/logov2.jpg' alt="logo" id="fileSelected">
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item"><a class="nav-link" href="#" style="color: #2f6cf7;">Home &nbsp;</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Menu One &nbsp;</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Menu Two &nbsp;</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Menu Three &nbsp;</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Menu Four &nbsp;</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Menu Five &nbsp;</a></li>
+                  <li class="nav-item"><button type="button" class="btn btn-nav btn-primary" (click)="navBtnLogin()">Login</button></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+</header>
+<div class="container-fluid">
+  <p-toast [style]="{marginTop: '80px'}"></p-toast>
+  <div class="row">
+
+    <div class="col-md-6 left-section">
+      <h4 class="title">RayX Diagnostics</h4>
+      <span class="left-span">CONNECTING THE DOTS</span>
+      <p class="title-text1">Oral and Maxillofacial Radiology services </p>
+        <p class="title-text2">Compressive Diagnostic Radiology Reports</p> 
+       <p class="title-text3">US based board Certified OM Radiologists</p>
+        <div *ngIf="loginForm" class="image-block">
+      <img class="doctor_image" src="./../../assets/img.jpg" alt="doctor_image">
+  </div>
+  <div *ngIf="!loginForm" class="image-block">
+    <img class="doctor_image" src="./../../assets/img2.jpg" alt="doctor_image">
+</div>
+</div>
+
+    <div class="col-md-6 right-section">
+      <div *ngIf="loginForm" class="content">
+        <h5 class="login-content-title">Welcome to RayX Diagnostics</h5>
+        <br>
+        <div class="content-box">
+          <form #f="ngForm" class="login-form" role="form" (submit)="login(f)">
+          <div>
+            <input type="email" class="text-input login-input" placeholder="Email" (keydown.space)="$event.preventDefault()"
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$" id="email" name="email" ngModel #emailref="ngModel"
+            [(ngModel)]="email" required>
+
+            <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty) " class="aler alert-danger">
+              <div [hidden]="!emailref.errors?.pattern">
+                Invalid pattern
+              </div>
+              </div>
+            </div>
+            <div>
+              <input type="password" class="text-input login-input" placeholder="Password" name="password" required [(ngModel)]="password"/>  
+            </div>
+            <!-- <input type="checkbox" id="remember" name="remember" value="remember" (click)="remember()">
+            <label for="remember"> Remember Me</label><br> -->
+              <a class="forgot" routerLink="/forgotpassword">Forgot password?</a>
+            <br>
+            <br>
+            <button type="submit" class="form-control btn btn-primary submit" [disabled]="!emailref.valid || !password">Login</button>
+          </form>
+          </div>
+            <span class="register-span">Don't have an account? <a class="signUp" routerLink="/signUp" (click)="formChange()">Click here</a></span>
+        <br>
+      </div>
+
+      <div *ngIf="!loginForm" class="content signUpContent">
+        <h5 class="signUp-content-title">Sign Up</h5>
+        <h6 style="font-size: 13px; margin-left: 5%; color: rgb(85, 84, 84); font-weight: 600;">Let's start with some basic information...</h6>
+        <div *ngIf="step1" class="steps row" style="padding-top: 2%;">
+          <div class="col-md-4 step-number" style=" margin-left: 5%;" (click)="stepChange()">
+            <h6  style="color: #4946f7; font-size: 11px;" >Step 1</h6>
+            <h6  style="color: #4946f7; font-size: 11px; position: absolute; top: 14px;">Personal Info</h6>
+          </div>
+          <div class="col-md-8 step-number"  style=" margin-left: -5%;"  (click)="stepChange()">
+            <h6 style="color: grey; font-size: 11px;">Step 2</h6>
+            <h6 style="color: grey; font-size: 11px; position: absolute; top: 14px;">Practice or Imagning Center Information</h6>
+          </div>
+        </div>
+        <div *ngIf="!step1" class="steps row" style="padding-top: 2%;">
+          <div class="col-md-4 step-number" style=" margin-left: 5%;"  (click)="stepChange()">
+            <h6  style="color: grey; font-size: 11px;" >Step 1</h6>
+            <h6 style="color: grey; font-size: 11px; position: absolute; top: 14px;">Personal Info</h6>
+          </div>
+          <div class="col-md-8 step-number" style=" margin-left: -5%;"  (click)="stepChange()">
+            <h6 style="color: #4946f7; font-size: 11px;">Step 2</h6>
+            <h6 style="color: #4946f7; font-size: 11px; position: absolute; top: 14px;">Practice or Imagning Center Information</h6>
+          </div>
+        </div>
+        <div *ngIf="step1" class="content-box">
+          <form class="signUp-step1" role="form" (submit)="signUp_step1()">
+          <!-- ++++++++++++++ Image Uploading here ++++++++++++++-->
+            <div>
+          <input name="img" type="file" class="choose-img" (change)="selectFile($event)">
+            <!-- <img class="user_image" src="{{imageUrl || 'https://tse1.mm.bing.net/th?id=OIP.ULpMVBjojvzZUclYEPzQ_wHaHa&pid=Api&P=0&w=300&h=300'" alt="user_image"> -->
+            <img class="user_image" src="https://tse1.mm.bing.net/th?id=OIP.ULpMVBjojvzZUclYEPzQ_wHaHa&pid=Api&P=0&w=300&h=300" alt="user_image">
+          </div>
+          <!-- ++++++++++++++++ -->
+          <div>
+            <input type="name" class="text-input signUp-input" placeholder="First Name*" name="firstName" required [(ngModel)]="firstName"/>  
+          </div>
+          <div>
+            <input type="name" class="text-input signUp-input" placeholder="Last Name" name="lastName" required [(ngModel)]="lastName"/>  
+          </div>
+          <div>
+            <input type="email" class="text-input signUp-input" placeholder="Email* (this will be your username)" (keydown.space)="$event.preventDefault()"
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$" id="email" name="email" ngModel #emailref="ngModel"
+            [(ngModel)]="email" required>
+
+          <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty) " class="aler alert-danger">
+            <div [hidden]="!emailref.errors?.pattern">
+              Invalid pattern
+            </div>
+          </div>
+            </div>
+            <div>
+              <div>
+                <input type="password" class="text-input signUp-input" placeholder="Password*" (keydown.space)="$event.preventDefault()"
+                pattern="^.*(?=.{8,}).*$" id="password" name="password" ngModel #passwordref="ngModel"
+                [(ngModel)]="password" required>
+    
+              <div *ngIf="passwordref.errors &&(passwordref.touched || passwordref.dirty) " class="aler alert-danger">
+                <div [hidden]="!passwordref.errors?.pattern">
+                  Length is too short
+                </div>
+              </div>
+            </div>
+            </div>
+          
+            <div>
+              <input type="password" class="text-input signUp-input" placeholder="Confirm Password*" name="confirmpassword" required [(ngModel)]="confirmpassword"/>  
+            </div>
+            <h6 style="font-size: 10px; margin-left: 1%;margin-top: 3%; color: rgb(54, 54, 54); font-weight: 600;">Use 8 or more characters with letters, numbers or symbols.</h6>
+            <button type="submit" class="form-control btn btn-primary submit" style="margin-top: 4%;"
+            [disabled]="!firstName || !emailref.valid || !passwordref.valid || !confirmpassword">Next</button>
+            <span class="login-span">Already a member? <a class="signUp" routerLink="/login" (click)="formChange()">Click here to log in</a></span>
+            <br>
+          </form>
+        </div>
+
+        <div *ngIf="!step1" class="content-box">
+          <form #f="ngForm" class="signUp-step2" role="form" (submit)="signUp(f)">
+          <div>
+            <input type="text" class="text-input signUp-input" placeholder="Practice or Imaging Center Name*" name="practiseName" required [(ngModel)]="practiseName"/>  
+          </div>
+          <div>
+            <input type="text" class="text-input signUp-input" placeholder="Street Address 1*" name="streetAdd1" required [(ngModel)]="streetAdd1"/>  
+          </div>
+          <div>
+             <input type="text" class="text-input signUp-input" placeholder="Street Address 2" name="streetAdd2" required [(ngModel)]="streetAdd2"/>  
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <p *ngIf="showCountry" class="virtual-text-country p-hover">Country*</p>
+                <select class="text-input signUp-input" id="countries" placeholder="Country*" name="country"  (click)="getState()" [(ngModel)]="country">
+                  <option *ngFor="let item of countries" value={{item}} >{{item}}</option>
+                </select>
+              <!-- <input type="text" class="text-input signUp-input" placeholder="Country*" name="country" required [(ngModel)]="country"/>   -->
+             </div>
+             <div class="col-md-6">
+               <p *ngIf="showState" class="virtual-text-state p-hover">State*</p>
+              <select class="text-input state-drpdwn signUp-input" id="states"  name="state" (click)="textHide()" [(ngModel)]="state">
+                <option *ngFor="let item of states" value={{item}} >{{item}}</option>
+              </select>
+    
+              <!-- <input type="text" class="text-input signUp-input" placeholder="State*" name="state" style="margin-left: -20%;" required [(ngModel)]="state"/>   -->
+             </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="text-input signUp-input" placeholder="City*" name="city" required [(ngModel)]="city"/> 
+             </div>
+             <div class="col-md-6">
+              <input type="number" class="text-input signUp-input" placeholder="Zip/Postal Code*" name="postalCode" style="margin-left: -20%;" required [(ngModel)]="postalCode"/>  
+             </div>
+            </div>
+            <div>
+              <input type="number" class="text-input signUp-input" placeholder="Primary Phone Number*" name="phoneNumber" required [(ngModel)]="phoneNumber"/>  
+            </div>
+            <button type="submit" class="form-control btn btn-primary submit" [disabled]="!practiseName || !streetAdd1 || !city || !state || !country || !postalCode || !phoneNumber" 
+            style="margin-top: 4%;">Signup</button>
+            <br>
+            <span class="decalartion-text1">By creating an account, I declare that I have read and accepted</span> 
+              <span class="decalartion-text2"> RayX Diagnostics <a routerLink="/">Terms of Use</a> and <a routerLink="/">Privacy Policy</a> </span>
+              <br>
+            <span class="login-span">Already a member? <a class="signUp" routerLink="/login" (click)="formChange()">Click here to log in</a></span>
+            <br>
+          </form>
+        </div>
+
+        <br/>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<header class="header sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+      <div class="container row">
+
+        <div class="col-md-3">
+          <img class="logo_image" src="./../../assets/logov2.jpg" alt="logo">
+        </div>
+
+        <div class="col-md-7">
+          <div class="has-search" style="margin-left: -2%;">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search" disabled>
+          </div>
+        </div> 
+
+        <div class="col-md-2" style="margin-left: 22%;">
+          <span><i class="fa fa-bell" aria-hidden="true"></i></span>
+          <div class="w3-dropdown-hover">
+              <img class="user_image" src="https://tse1.mm.bing.net/th?id=OIP.ULpMVBjojvzZUclYEPzQ_wHaHa&pid=Api&P=0&w=300&h=300" alt="user_image">
+            <div class="w3-dropdown-content w3-bar-block w3-border">
+              <a  [routerLink]="['profile']" [routerLinkActive]="['router-link-active']"  class="w3-bar-item w3-button">My Profile</a>
+              <a  (click)="logout()"  class="w3-bar-item w3-button">Sign Out</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </nav>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2">
+      <app-sidebar (collapsedEvent)="receiveCollapsed($event)"></app-sidebar>
+      <section class="main-container" [ngClass]="{collapsed: collapedSideBar}"></section>
+    </div>
+
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+  </div>
+  </div>
+</div>

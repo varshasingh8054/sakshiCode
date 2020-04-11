@@ -1,0 +1,213 @@
+<!-- <p-toast [style]="{marginTop: '80px'}"></p-toast>
+<div class="container" style="height: 720px;">
+
+  <div class="title">
+    <h4 style="font-size: 24px !important;">Create New Case</h4>
+    <hr>
+  </div>
+
+  <div class="stepper">
+    <div class="row">
+      <div class="col-md-3">
+        <p *ngIf="!step1" style="color: #8c8c8c;" (click)="Step1()">
+          <span class="step-inactive" style="color: white;"> 1 </span>&nbsp; &nbsp;Patient Details
+        </p>
+        <p *ngIf="step1" style="color: white;" (click)="Step1()">
+          <span class="step-active"> 1 </span>&nbsp; &nbsp;Patient Details
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p *ngIf="!step2" style="color: #8c8c8c; position:relative; left: -25%;" (click)="Step2()">
+          <span class="step-inactive" style="color: white;"> 2 </span>&nbsp; &nbsp;Notes
+        </p>
+        <p *ngIf="step2" style="color: white; position:relative; left: -25%;" (click)="Step2()">
+          <span class="step-active"> 2 </span>&nbsp; &nbsp;Notes
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p *ngIf="!step3" style="color: #8c8c8c; position:relative; left: -65%;" (click)="Step3()">
+          <span class="step-inactive" style="color: white;"> 3 </span>&nbsp; &nbsp;Select services
+        </p>
+        <p *ngIf="step3" style="color: white; position:relative; left: -65%;" (click)="Step3()">
+          <span class="step-active"> 3 </span>&nbsp; &nbsp;Select services
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p *ngIf="!step4" style="color: #8c8c8c; position:relative; left: -85%;" (click)="Step4()">
+          <span class="step-inactive" style="color: white;"> 4 </span>&nbsp; &nbsp;Upload files
+        </p>
+        <p *ngIf="step4" style="color: white; position:relative; left: -85%;" (click)="Step4()">
+          <span class="step-active"> 4 </span>&nbsp; &nbsp;Upload files
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="formInitial" class="content-box" style="height: 78%;">
+
+    <p class="form-heading">Step 1 Patient Details</p>
+
+    <form #f="ngForm" class="form-content" role="form" (submit)="details(f)">
+      <div>
+        <input type="text" class="text-input input-field" placeholder="First Name*" name="firstName" required [(ngModel)]="firstName"/>  
+      </div>
+      <div>
+        <input type="text" class="text-input input-field" placeholder="Last Name*" name="lastName" required [(ngModel)]="lastName"/>  
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <p-calendar placeholder="DOB" [monthNavigator]="true" [showIcon]="true" [yearNavigator]="true" yearRange="1950:2030" name= "dob"[(ngModel)]="dob"></p-calendar>
+      </div>
+       <div class="ui-g gender">
+        <label style="margin-left: 9px;color: #656667;">Gender</label>
+          <span class="radio-options"><p-radioButton name="gender" value="male" label="Male" inputId="opt1" [(ngModel)]="gender"></p-radioButton>
+          &nbsp; &nbsp; &nbsp; &nbsp;<p-radioButton name="gender" value="female" label="Female" inputId="opt2" [(ngModel)]="gender"></p-radioButton>
+          &nbsp; &nbsp; &nbsp; &nbsp;<p-radioButton name="gender" value="Other" label="Other" inputId="opt3" [(ngModel)]="gender"></p-radioButton>
+          </span>
+      </div>
+      <div class="ui-g-12 ui-md-4" style="margin-top: 18%; margin-left: -33%;">
+        <p-calendar placeholder="Study date" [monthNavigator]="true" [showIcon]="true" [yearNavigator]="true" yearRange="1950:2030" name="studyDate" [(ngModel)]="studyDate"></p-calendar>
+      </div>
+      <div style="margin-top: 25%;">
+      <p class="practice-heading">{{practiseName}}</p>
+      </div>
+      <label style="position: relative; top: -15px;left: 15px; color: grey; z-index: 9;">Doctor</label>
+      <div>
+        <select class="input-field" id="doctor" style="position: relative; top: -40px; left: 8px;" name="doctor" [(ngModel)]="doctor">
+          <option *ngFor="let item of assosiateDoc" value={{item._id}}>{{item.firstName}}</option>
+        </select>
+      </div>
+      <div>
+        <label style=" z-index: 99;  position: relative; color: grey; top: -30px; left: 15px;">Select Referring Doctor</label>
+        <select class="input-field" id="ref-doctor"  style="position: relative; top: -50px; left: 8px;" name="referringDoctor" [(ngModel)]="referringDoctor">
+          <option *ngFor="let item of refDoc" value={{item._id}}>{{item.firstName}}</option>
+        </select>
+      </div>
+      <div>
+        <input type="text" class="text-input input-field" placeholder="Radiologist" name="radiologist" style="position: relative; top: -45px; left: 8px;" disabled name="radiologist" [(ngModel)]="radiologist"/> 
+      </div> 
+     <div class="buttons" style="    margin-top: -5%;  margin-left: 2%;">
+        <span>
+          <button type="reset" class="btn btn-light cancel">Cancel</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-light draft" (click)="draft()">Save as Draft</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-light continue">Continue</button>
+        </span>
+      </div>
+    </form>
+
+  
+  </div>
+
+  
+  <div *ngIf="submitted1" class="content-box" style="min-height: 57%;">
+    <p class="form-heading">Step 2 Notes</p>
+    <br>
+    <form #f="ngForm" class="form-content" role="form" (submit)="notes(f)">
+    <div style="position: relative; top: -28px;">
+      <label style=" margin-left: 2%; color: gray;">Study Purpose</label>
+        <select class="input-field" id="study-purpose" style="position: relative; top: -9px;" name="studyPurpose" [(ngModel)]="studyPurpose">
+          <option value="Rule Out Pathology">Rule Out Pathology</option>
+          <option value="Implant">Implant</option>
+          <option value="Impaction">Impaction</option>
+          <option value="Pathology">Pathology</option>
+          <option value="Endontics">Endontics</option>
+          <option value="Sinuses">Sinuses</option>
+          <option value="Orthodontics">Orthodontics</option>
+          <option value="Trauma">Trauma</option>
+          <option value="Others">Others</option>
+        </select>
+    </div>
+    <div style="margin-top: -2%;">
+      <textarea rows="4" cols="70" placeholder="Notes to radiologist" name="notesToRadiologist" [(ngModel)]="notesToRadiologist"></textarea>
+    </div>
+    <div>
+      <textarea rows="4" cols="70" placeholder="Additional Notes" style="margin-top: 1%;" name="additionalNotes" [(ngModel)]="additionalNotes"></textarea>
+    </div>
+    <div class="buttons" style="margin-top: 1%;">
+      <span>
+        <button type="reset" class="btn btn-light cancel" >Cancel</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-light draft" (click)="draft()">Save as Draft</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-light continue">Continue</button>
+      </span>
+    </div>
+  </form>
+  </div>
+
+
+  <div *ngIf="submitted2" class="content-box" style="min-height: 78%;">
+    <p class="form-heading">Step 3 Select Services</p>
+    <form #f="ngForm" class="form-content" role="form" (submit)="Service(f)">
+      <div class="row">
+        <div class="col-md-6">
+          <label style="font-weight: 600;font-size: 17px; margin-left: 5%;">Name</label><br>
+          <div *ngFor="let data of services"   style="margin-top: 3%;">
+          <label for="vehicle1" style="margin-left: 5%;color: #5e5e5e;">{{data.name}}</label>
+          <input type="checkbox" id="service" name="service" value="{{data._id}}"
+          style="float: right; margin-right: 25%;" name="service" [(ngModel)]="service"><br>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label  style="font-weight: 600;font-size: 17px;">Price</label><br>
+          <div *ngFor="let data of services"   style="margin-top: 3%;">
+          <label for="vehicle1" style="color: #5e5e5e;">${{data.price}}.00</label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <p class="delivery-heading">Delivery Type</p>
+      <div class="row">
+        <div class="col-md-6">
+          <label style="font-weight: 600;font-size: 17px; margin-left: 5%;">Name</label><br>
+          <div *ngFor="let data of delivery"   style="margin-top: 3%;">
+          <label for="vehicle1" style="margin-left: 5%;color: #5e5e5e;">{{data.name}}</label>
+          <input type="checkbox" id="service" name="service" value="{{data._id}}" style="float: right; margin-right: 25%;" name="deliveryType" [(ngModel)]="deliveryType"><br>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label  style="font-weight: 600;font-size: 17px;">Price</label><br>
+          <div *ngFor="let data of delivery"   style="margin-top: 3%;">
+          <label for="vehicle1" style="color: #5e5e5e;">${{data.price}}.00</label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+         <label  style="font-weight: 600;font-size: 17px;float: right;margin-right: 25%;">Total:</label><br>
+        </div>
+        <div class="col-md-6">
+          <p style="font-weight: 600;">$10.25</p>
+        </div>
+      </div>
+      <div class="buttons" style="margin-top: 1%;">
+        <span>
+          <button type="reset" class="btn btn-light cancel">Cancel</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-light draft">Save as Draft</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-light continue">Continue</button>
+        </span>
+      </div>
+    </form>
+  </div>
+  
+  <div *ngIf="submitted3" class="content-box" style="min-height: 50%;">
+    <p class="form-heading">Step 4 Upload Files</p>
+    <p style="margin-left: 35px; font-size: 22px;">File Upload</p>
+    <form #f="ngForm" class="form-content" role="form" (submit)="files(f)" style="margin-top: -5%;">
+      <p class="dragDrop-heading"> or Drag and Drop your files here.</p>
+      <p-fileUpload  (onUpload)="onUpload($event)"
+      multiple="multiple" accept="image/*" maxFileSize="1000000">
+      <ng-template pTemplate="content">
+      <ul *ngIf="uploadedFiles.length">
+          <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+      </ul>
+      </ng-template>
+      </p-fileUpload>
+    <div class="buttons" style="margin-top: 2%;">
+    <span>
+      <button type="reset" class="btn btn-light cancel">Cancel</button>&nbsp;&nbsp;
+      <button type="submit" class="btn btn-light draft" (click)="draft()">Save as Draft</button>&nbsp;&nbsp;
+      <button type="submit" class="btn btn-light continue">Continue</button>
+    </span>
+    </div>
+    </form>
+  </div>
+</div>  -->

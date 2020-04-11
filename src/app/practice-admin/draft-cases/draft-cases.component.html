@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="title">
+        <h4 style="font-size: 24px !important;">Draft Cases</h4>
+    <hr>
+  </div>
+
+  <div class="submitted-case">
+
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+        <h6 class="nav-title">List of draft cases</h6>
+      </nav>
+    </header>
+
+    <div class="table" style="max-height: 400px; overflow: auto;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" style="color: #0e59cc;">CASE ID</th>
+            <th scope="col">DOCTOR</th>
+            <th scope="col">PATIENT NAME</th>
+            <th scope="col">SERVICE</th>
+            <th scope="col">RADIOLOGIST</th>
+            <th scope="col">RECIEVED</th>
+          </tr>
+        </thead>
+        <!-- <tbody>
+          <tr *ngFor="let item of assosiateDoc">
+            <td>{{item.firstName.charAt(0).toUpperCase() + item.firstName.slice(1)}} {{item.lastName.charAt(0).toUpperCase() + item.lastName.slice(1)}}</td>
+            <td>{{item.email}}</td>
+            <td *ngIf="item.status == 'Pending'" style="color:  #ff7800;">Pending</td>
+            <td *ngIf="item.status == 'Active'" style="color: #43ae26;">Active</td>
+            <td>
+              <div  *ngIf="item.status == 'Pending'" class="dropdown">
+                <button class="dropbtn">Actions</button>
+                <div  class="dropdown-content">
+                  <a class="actions" (click)="remove(item)">Remove Access</a>
+                  <a class="actions" (click)="resend(item)">Resend Invitation</a>
+                </div>
+              </div>
+              <div  *ngIf="item.status == 'Active'" class="dropdown">
+                <button class="dropbtn" style="width: 150% !important;">Action</button>
+                <div class="dropdown-content">
+                  <a class="actions" (click)="remove(item)">Remove Access</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody> -->
+        <!-- <tbody *ngIf="assosiateDoc.length == 0">
+          <p class="text-center no_data"> No Data Found!</p>
+         </tbody> -->
+      </table>
+    </div>
+  
+  </div>
+
+</div>
